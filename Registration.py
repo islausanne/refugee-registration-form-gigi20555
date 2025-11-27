@@ -27,33 +27,36 @@ if __name__ == '__main__':
 @app.route('/submit', methods=['POST'])
 def submit_form():
     name = request.form['name']
+    last_name = request.form['last_name']
     email = request.form['email']
     password = request.form['password']
     confirmation = request.form['confirmation']
-    message = request.form['message']
+    dob = request.form['Date of Birth']
     gender = request.form['gender']
     nationality = request.form['nationality']
+    message = request.form['message']
     emergency_contact = request.form['emergency_contact']
     number_of_dependants = request.form['number_of_dependants']
-    age = request.form['age']
     phone_number = request.form['phone_number']
     assistance_needed = request.form['assistance_needed']
     address = request.form['address']
 
     # Store values in session so we can repopulate them
     session['name'] = name
+    session['last_name'] = last_name
     session['email'] = email
     session['message'] = message
     session['password'] = password
     session['gender'] = gender
     session['nationality'] = nationality
     session['emergency_contact'] = emergency_contact
-    session['age'] = age
+    session['Date of Birth'] = dob
     session['number_of_dependants'] = number_of_dependants
     session['phone_number'] = phone_number
     session['assistance_needed'] = assistance_needed
     session['address'] = address
     session['confirmation'] = confirmation
+
 
     if __name__ == ('__main__'):
         app.run(debug=True)
@@ -62,7 +65,16 @@ def submit_form():
     if not name or not email or not message or not password:
         flash('All fields are required to be filled out in order to continue')
         return redirect(url_for('index'))
-    if age < 0 or age > 100:
+
+    if last_name == ('__main__')
+        app.run(debug=True)
+        return redirect(url_for('index'))
+
+    elif last_name = integer:
+        flash('You cannot submit a last name with numerical values')
+        return redirect(url_for('index'))
+
+    if dob < 0 or age > 100:
         flash('Age must be between 0 and 200!')
         return redirect(url_for('index'))
 
@@ -89,7 +101,7 @@ def submit_form():
         flash('Please enter a valid number of dependants.')
         return render_template('contact_form.html')
 
-    if phone_number == '':
+    if phone_number == '' or phone_number != integers:
         flash('Please enter a valid phone number.')
         return render_template('contact_form.html')
 
@@ -108,7 +120,6 @@ def submit_form():
         else:
             data = {}
 
-
     if address does not have 0=<100len(address):
         flash('Please enter a valid address.')
         return render_template('admin_form.html')
@@ -121,16 +132,18 @@ def submit_form():
         flash('Please enter a valid assistance needed.')
         return render_template('contact_form.html')
 
+    if
+
     else:
         flash("Thank you for registering!")
         return redirect(url_for('index'))
 
 
         return render_template('contact_form.html', name=name, email=email, message=message)
-        session.pop('name', None)
-        session.pop('email', None)
-        session.pop('message', None)
-        flash(f'Thank you, {name}. Your message has been submitted successfully!')
+            session.pop('name', None)
+            session.pop('email', None)
+            session.pop('message', None)
+            flash(f'Thank you, {name}. Your message has been submitted successfully!')
             return redirect(url_for('index'))
 
 #if name.strip() == "":
@@ -146,14 +159,6 @@ def submit_form():
    # if password != request.form['password']:
     #    flash('Passwords do not match.')
      #   return redirect(url_for('index'))
-
-
-
-
-
-
-
-
 
 import json
 import os
